@@ -1,0 +1,36 @@
+/* footer_bg.png */
+.footerbg
+{
+background:url('/assets/style/css-sprites.gif') 0px -0px;
+display:inline-block;
+width:25px;
+height:190px;
+}
+
+/* hr.jpg */
+.hr
+{
+background:url('/assets/style/css-sprites.gif') -25px -129px;
+display:inline-block;
+width:27px;
+height:61px;
+}
+
+/* logo.png */
+.logo
+{
+background:url('/assets/style/css-sprites.gif') -52px -130px;
+display:inline-block;
+width:190px;
+height:60px;
+}
+
+/* menubg.jpg */
+.menubg
+{
+background: transparent url('/assets/style/css-sprites.gif') -242px -130px !important;
+display:inline-block;
+width:16px;
+height:60px;
+}
+

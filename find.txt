@@ -1,0 +1,18 @@
+./application/helpers/cias_helper.php:        $config['smtp_host'] = SMTP_HOST;
+./application/helpers/cias_helper.php:        $config['smtp_host'] = SMTP_HOST;
+./application/config/constants.php:define('SMTP_HOST',                             'Your smtp host');		// your smtp host e.g. smtp.gmail.com
+./application/controllers/Domains.php:              $this->global['pageTitle'] = 'CodeInsect : Dashboard';
+./application/controllers/Domains.php:                    $this->global['pageTitle'] = 'CodeInsect : Dashboard';
+./application/controllers/User.php:        $this->global['pageTitle'] = 'CodeInsect : Dashboard';
+./application/controllers/User.php:            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+./application/controllers/User.php:            $this->global['pageTitle'] = 'CodeInsect : Add New User';
+./application/controllers/User.php:            $this->global['pageTitle'] = 'CodeInsect : Edit User';
+./application/controllers/User.php:        $this->global['pageTitle'] = 'CodeInsect : Change Password';
+./application/controllers/User.php:        $this->global['pageTitle'] = 'CodeInsect : 404 - Page Not Found';
+./application/controllers/User.php:            $this->global['pageTitle'] = 'CodeInsect : User Login History';
+./application/libraries/BaseController.php:		$this->global ['pageTitle'] = 'CodeInsect : Access Denied';
+./application/views/login.php:    <title>CodeInsect | Admin System Log in</title>
+./application/views/email/resetPassword.php:																	<a href="<?php echo base_url(); ?>" title="CodeInsect" style="display:inline-block" target="_blank">CodeInsect</a>
+./application/views/forgotPassword.php:    <title>CodeInsect | Admin System Log in</title>
+./application/views/newPassword.php:    <title>CodeInsect | Admin System Log in</title>
+./application/views/newPassword.php:        <a href="#"><b>CodeInsect</b><br>Admin System</a>
