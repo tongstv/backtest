@@ -16,7 +16,7 @@ class Demo extends BaseController
      * This is default constructor of the class
      */
 
-    protected $title = " DEMO";
+    protected $title = " Demo";
     public function __construct()
     {
         parent::__construct();

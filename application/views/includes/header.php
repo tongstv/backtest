@@ -95,7 +95,8 @@
                   <i class="fa fa-history"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="header"> Last Login : <i class="fa fa-clock-o"></i> <?= empty($last_login) ? "First Time Login" : $last_login; ?></li>
+                  <li class="header"> Last Login : <i class="fa fa-clock-o"></i> <?= empty($last_login) ?
+"First Time Login" : $last_login; ?></li>
                 </ul>
               </li>
               <!-- User Account: style can be found in dropdown.less -->
@@ -142,69 +143,63 @@
             </li>
             
             <?php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
-            {
-            ?>
+if ($role == ROLE_ADMIN || $role == ROLE_MANAGER) {
+?>
           
            
             <?php
-            }
-            if($role == ROLE_ADMIN)
-            {
-            ?>
+}
+if ($role == ROLE_ADMIN) {
+?>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>userListing">
                 <i class="fa fa-users"></i>
                 <span>Quản lý tài khoản</span>
               </a>
             </li>
-                   
-          
-          
-           
-              <li class="treeview">
-              <a href="<?php echo base_url(); ?>congviecadmin">
-                <i class="fa fa-users"></i>
-                <span>Công việc của admin</span>
-              </a>
-          
-          
-          <li class="treeview">
-              <a href="<?php echo base_url(); ?>trangthai">
-                <i class="fa fa-users"></i>
-                <span>Trạng thái công việc</span>
-              </a>
-            </li>
             
             
              <li class="treeview">
-              <a href="<?php echo base_url(); ?>bophan">
+              <a href="<?php echo base_url(); ?>Fields">
                 <i class="fa fa-users"></i>
-                <span>Bộ phận</span>
-              </a>
-            </li>
-          
-          
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>baogia">
-                <i class="fa fa-users"></i>
-                <span>Báo giá</span>
+                <span>Fields Map</span>
               </a>
             </li>
             
             
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>khachhanguutien">
+            
+             <li class="treeview">
+              <a href="<?php echo base_url(); ?>Logics">
                 <i class="fa fa-users"></i>
-                <span>Khách hàng ưu tiên</span>
+                <span>Logics</span>
+              </a>
+            </li>
+                   
+          
+
+          
+          
+          
+             <li class="treeview">
+              <a href="<?php echo base_url(); ?>Candlesd">
+                <i class="fa fa-users"></i>
+                <span>Candlesd</span>
               </a>
             </li>
           
           
            <li class="treeview">
-              <a href="<?php echo base_url(); ?>noidung">
+              <a href="<?php echo base_url(); ?>Querygroup">
                 <i class="fa fa-users"></i>
-                <span>Trang nội dung</span>
+                <span>Querygroup</span>
+              </a>
+            </li>
+          
+          
+             <li class="treeview">
+              <a href="<?php echo base_url(); ?>Querybuild">
+                <i class="fa fa-users"></i>
+                <span>Querybuild</span>
               </a>
             </li>
           
@@ -212,24 +207,20 @@
           
           
             <?php
-            }
-            ?>
+}
+?>
             
             
             
             
             
             
-            
-              <li class="treeview">
-              <a href="<?php echo base_url(); ?>congviec">
-                <i class="fa fa-users"></i>
-                <span>Công việc</span>
-              </a>
-            </li>
+
             
             
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
+      
+      <div id="viewdemo"><div></div></div>

@@ -50,19 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = "home";
+$route['default_controller'] = "login";
 $route['404_override'] = 'error';
 
 
 /*********** USER DEFINED ROUTES *******************/
-$route['home'] = "home";
-$route['admin'] = "login";
-$route['loginMe'] = 'login/loginMe';
-$route['dashboard'] = 'congviec';
-$route['dashboard/(:any)'] = 'congviec/$1';
-$route['dashboard/(:any)/(:any)'] = 'congviec/$1/$2';
-$route['dashboard/(:any)/(:any)/(:num)'] = 'congviec/$1/$2/$3';
 
+$route['loginMe'] = 'login/loginMe';
+$route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 $route['userListing'] = 'user/userListing';
 $route['userListing/(:num)'] = "user/userListing/$1";
