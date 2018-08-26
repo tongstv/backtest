@@ -179,23 +179,6 @@ if ($role == ROLE_ADMIN) {
 
           
           
-          
-             <li class="treeview">
-              <a href="<?php echo base_url(); ?>Candlesd">
-                <i class="fa fa-users"></i>
-                <span>Candlesd</span>
-              </a>
-            </li>
-          
-          
-           <li class="treeview">
-              <a href="<?php echo base_url(); ?>Querygroup">
-                <i class="fa fa-users"></i>
-                <span>Querygroup</span>
-              </a>
-            </li>
-          
-          
              <li class="treeview">
               <a href="<?php echo base_url(); ?>Querybuild">
                 <i class="fa fa-users"></i>
@@ -223,4 +206,4 @@ if ($role == ROLE_ADMIN) {
         <!-- /.sidebar -->
       </aside>
       
-      <div id="viewdemo"><div></div></div>
+  

@@ -1,24 +1,6 @@
 
 
-<style>
-#viewdemo
-{
-    display: block;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 11px 11px 11px #333;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 600px;
-    z-index: 99999999999999999999999999;
-    border: 2px solid #333;
-    padding: 15px;
-    
-}
 
-</style>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>STVinc</b> Admin System | Version 2.0
@@ -34,6 +16,15 @@
     <script src="<?php echo base_url(); ?>assets/dist/js/app.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.validate.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>assets/js/validation.js" type="text/javascript"></script>
+    
+    
+    <?php
+    if(isset($body))
+    {
+      echo $body;  
+    }
+    ?>
+    
 
 
     <script type="text/javascript">

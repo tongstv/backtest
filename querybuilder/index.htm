@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="GallerySoft.info" />
+
+	<title>Untitled 1</title>
+    
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      
+       <script src="jquery/jquery.min.js"></script>
+       
+         <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+    <div id="builder-basic"></div>
+
+<a href="#" id="btn-get">Get</a>
+
+<link href="jQuery-QueryBuilder/dist/css/query-builder.default.min.css" rel="stylesheet">
+
+<script src="moment/min/moment.min.js"></script>
+<script src="jQuery-QueryBuilder/dist/js/query-builder.standalone.min.js"></script>
+
+
+<script type="text/javascript">
+	
+$(document).ready(function(){
+
+
+     var rules_basic = {
+  condition: 'AND',
+  rules: [{
+    id: 'price',
+    operator: 'less',
+    value: 10.25
+  }]
+  
+};
+
+$('#builder-basic').queryBuilder({
+  plugins: ['bt-tooltip-errors'],
+  
+  filters: [{
+    id: 'name',
+    label: 'Name',
+    type: 'string',
+    operators: ['equal', 'not_equal', 'in', 'not_in', 'is_null', 'is_not_null']
+  }, {
+    id: 'id',
+    label: 'Identifier',
+    type: 'string',
+    placeholder: '____-____-____',
+    operators: ['equal', 'not_equal'],
+    validation: {
+      format: /^.{4}-.{4}-.{4}$/
+    }
+  }],
+
+  rules: rules_basic
+});
+
+$('#btn-reset').on('click', function() {
+  $('#builder-basic').queryBuilder('reset');
+});
+
+$('#btn-set').on('click', function() {
+  $('#builder-basic').queryBuilder('setRules', rules_basic);
+});
+
+$('#btn-get').on('click', function() {
+  var result = $('#builder-basic').queryBuilder('getRules');
+  
+  if (!$.isEmptyObject(result)) {
+    alert(JSON.stringify(result, null, 2));
+  }
+});
+});
+
+</script>
+</body>
+</html>
