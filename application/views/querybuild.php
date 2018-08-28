@@ -10,7 +10,32 @@
             <div class="box-body">
                 <div id="builder-basic"></div>
 
-<a href="#" id="btn-get">Get</a>
+                                
+                                
+                                <?php echo form_open('',['id' => 'querybuild'])?>
+
+
+
+
+<input type="hidden" value="" name="l_code" id="l_code" />
+  <div class="form-group">
+  
+  <label class="control-label col-md-4">Name</label>
+  <div class="col-md-7">
+  
+  <input class="form-control" name="l_name" placeholder="Name" />
+  </div>
+  </div>
+  
+    <div class="form-group">
+    
+   
+   <input type="submit" name="submit" class="btn btn-success" />
+    </div>
+
+
+<?php echo form_close()?>
+  
                                 
             </div>
         </div>
@@ -20,4 +45,7 @@
 </section>
 </div>
 
-  
+
+
+
+

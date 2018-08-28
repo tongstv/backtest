@@ -279,6 +279,39 @@ var formdata=$(this).serialize();
         
         
         
+            if($this->input->post('submit'))
+            {
+                
+                
+                
+                
+                if($this->input->post('l_name'))
+                {
+                    
+                    
+                    
+                    $postval = array('l_name' => $this->input->post('l_name'),
+                    
+                    'l_code' =>  $this->input->post('l_code')
+                    );
+                    
+                    $this->db->insert("tbl_listconfig",$postval);
+                    
+                    
+                    $data['msg'] ="Add querybuild success";
+                    
+                
+                    
+                }
+                
+                
+                
+                
+                
+                
+            }
+        
+        
             $data=[];
           $this->load->view('includes/header',$this->global);
 
@@ -375,6 +408,15 @@ $('#btn-get').on('click', function() {
 });
 });
 
+
+$("#querybuild").on('submit',function(){
+    
+      var result = $('#builder-basic').queryBuilder('getRules');
+      
+
+    $("#l_code").val(JSON.stringify(result, null, 2));
+    
+});
 </script>
 EOT;
 

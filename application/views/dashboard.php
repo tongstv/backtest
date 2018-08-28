@@ -1,126 +1,66 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html" />
-	<meta name="author" content="GallerySoft.info" />
-
-	<title>Untitled 1</title>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+        <small>Control panel</small>
+      </h1>
+    </section>
     
-      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      
-       <script src="jquery/jquery.min.js"></script>
-       
-         <script src="bootstrap/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
-
-    <div id="builder-basic"></div>
-
-<a id="btn-get"> gET</a>
-
-<link href="jQuery-QueryBuilder/dist/css/query-builder.default.min.css" rel="stylesheet">
-
-<script src="moment/min/moment.min.js"></script>
-<script src="jQuery-QueryBuilder/dist/js/query-builder.standalone.min.js"></script>
-
-
-<script type="text/javascript">
-	
-$(document).ready(function(){
-
-
-     var rules_basic = {
-  condition: 'AND',
-  rules: [{
-    id: 'price',
-    operator: 'less',
-    value: 10.25
-  }, {
-    condition: 'OR',
-    rules: [{
-      id: 'category',
-      operator: 'equal',
-      value: 2
-    }, {
-      id: 'category',
-      operator: 'equal',
-      value: 1
-    }]
-  }]
-};
-
-$('#builder-basic').queryBuilder({
-  plugins: ['bt-tooltip-errors'],
-  
-  filters: [{
-    id: 'name',
-    label: 'Name',
-    type: 'string'
-  }, {
-    id: 'category',
-    label: 'Category',
-    type: 'integer',
-    input: 'select',
-    values: {
-      1: 'Books',
-      2: 'Movies',
-      3: 'Music',
-      4: 'Tools',
-      5: 'Goodies',
-      6: 'Clothes'
-    },
-    operators: ['equal', 'not_equal', 'in', 'not_in', 'is_null', 'is_not_null']
-  }, {
-    id: 'in_stock',
-    label: 'In stock',
-    type: 'integer',
-    input: 'radio',
-    values: {
-      1: 'Yes',
-      0: 'No'
-    },
-    operators: ['equal']
-  }, {
-    id: 'price',
-    label: 'Price',
-    type: 'double',
-    validation: {
-      min: 0,
-      step: 0.01
-    }
-  }, {
-    id: 'id',
-    label: 'Identifier',
-    type: 'string',
-    placeholder: '____-____-____',
-    operators: ['equal', 'not_equal'],
-    validation: {
-      format: /^.{4}-.{4}-.{4}$/
-    }
-  }],
-
-  rules: rules_basic
-});
-
-$('#btn-reset').on('click', function() {
-  $('#builder-basic').queryBuilder('reset');
-});
-
-$('#btn-set').on('click', function() {
-  $('#builder-basic').queryBuilder('setRules', rules_basic);
-});
-
-$('#btn-get').on('click', function() {
-  var result = $('#builder-basic').queryBuilder('getRules');
-  
-  if (!$.isEmptyObject(result)) {
-    alert(JSON.stringify(result, null, 2));
-  }
-});
-});
-
-</script>
-</body>
-</html>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>150</h3>
+                  <p>New Tasks</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <p>Completed Tasks</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>44</h3>
+                  <p>New User</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>65</h3>
+                  <p>Reopened Issue</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+          </div>
+    </section>
+</div>

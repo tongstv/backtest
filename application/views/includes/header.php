@@ -78,9 +78,9 @@
         <!-- Logo -->
         <a href="<?php echo base_url(); ?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>ST</b>V</span>
+          <span class="logo-mini"><b>B</b>T</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>STVinc</b></span>
+          <span class="logo-lg"><b>BackTest</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -161,7 +161,7 @@ if ($role == ROLE_ADMIN) {
             
              <li class="treeview">
               <a href="<?php echo base_url(); ?>Fields">
-                <i class="fa fa-users"></i>
+                <i class="fa  fa-angle-double-right"></i>
                 <span>Fields Map</span>
               </a>
             </li>
@@ -170,7 +170,7 @@ if ($role == ROLE_ADMIN) {
             
              <li class="treeview">
               <a href="<?php echo base_url(); ?>Logics">
-                <i class="fa fa-users"></i>
+                <i class="fa  fa-angle-double-right"></i>
                 <span>Logics</span>
               </a>
             </li>
@@ -181,13 +181,39 @@ if ($role == ROLE_ADMIN) {
           
              <li class="treeview">
               <a href="<?php echo base_url(); ?>Querybuild">
-                <i class="fa fa-users"></i>
+                <i class="fa  fa-angle-double-right"></i>
                 <span>Querybuild</span>
               </a>
             </li>
           
           
           
+               <li class="treeview">
+              <a href="<?php echo base_url(); ?>Listconfig">
+                <i class="fa  fa-angle-double-right"></i>
+                <span>List Strategies</span>
+              </a>
+            </li>
+          
+          
+          
+          
+             <li class="treeview">
+              <a href="<?php echo base_url(); ?>Backtest">
+                <i class="fa  fa-angle-double-right"></i>
+                <span>Backtest</span>
+              </a>
+            </li>
+          
+          
+          
+             <li class="treeview">
+              <a href="<?php echo base_url(); ?>Backtest Repost">
+                <i class="fa  fa-angle-double-right"></i>
+                <span>Backtest repost</span>
+              </a>
+            </li>
+            
           
             <?php
 }
