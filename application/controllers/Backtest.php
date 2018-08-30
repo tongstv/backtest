@@ -39,15 +39,23 @@ class Backtest extends BaseController
                     'constraint' => 20,
                     'unsigned' => true,
                     'auto_increment' => true),
-                'b_name' => array(
+                'name' => array(
                     'type' => 'VARCHAR',
                     'constraint' => '255',
                     ),
                     
-                    'b_code' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => '1000',
+                    
+                     'date_start' => array(
+                    'type' => 'date',
+                 
                     ),
+                    
+                       'date_end' => array(
+                    'type' => 'date',
+                 
+                    ),
+
+
 
 
                 ));
@@ -59,32 +67,52 @@ class Backtest extends BaseController
         endif;
     }
 
+    /**
+     * This function used to load the first screen of the user
+     */
+
+    public function _example_output($output = null)
+    {
+
+        $data['output'] = (array )$output;
+        $this->load->view('includes/header', $this->global);
+
+        $this->load->view('crud', (array )$output);
+        $this->load->view('includes/footer', $data);
+    }
 
     public function index()
     {
-        $data=[];
-        
-           $this->load->view('includes/header',$this->global);
-       $this->load->view('backtest', $data);
-
-$body="<script src='".base_url('assets/')."plugins/daterangepicker/daterangepicker.js'></script>
-
-  <link rel=\"stylesheet\" href='".base_url('assets/')."plugins/daterangepicker/daterangepicker-bs3.css'><script>
-
-$(document).ready(function(){
-      $('#reservationtime').daterangepicker({
-      timePicker         : true,
-      timePickerIncrement: 30,
-      format             : 'MM/DD/YYYY h:mm A'
-    })
-});
+        $this->global['pageTitle'] = $this->title . ': Page';
 
 
-</script>
-";
-$data['body']=$body;
+        $crud = $this->grocery_crud;
 
 
- $this->load->view('includes/footer', $data);
+        $unset_col = array('user_id', );
+
+
+        if ($this->role == ROLE_ADMIN) {
+
+        }
+
+        $display_as = array('code' => 'Strategies', );
+
+        $required = array('name');
+
+
+
+
+        $crud->set_table('tbl_' . strtolower(__class__))->set_subject($this->title)->
+            display_as($display_as)->required_fields($required)->unset_columns($unset_col);
+
+
+        // $crud->set_field_upload('image', 'assets/uploads/files');
+
+
+         $crud->set_relation('code','tbl_listconfig','{l_name}');
+
+        $output = $crud->render();
+        $this->_example_output($output);
     }
 }

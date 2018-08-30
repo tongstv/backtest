@@ -273,7 +273,7 @@ var formdata=$(this).serialize();
         $this->load->view('includes/footer', $data);
     }
 
-    public function index()
+    public function index($id=null)
     {
         $this->global['pageTitle'] = $this->title . ': Page';
         
@@ -315,7 +315,7 @@ var formdata=$(this).serialize();
             $data=[];
           $this->load->view('includes/header',$this->global);
 
-        $this->load->view('querybuild', $data);
+
        
         
         
@@ -368,6 +368,10 @@ var formdata=$(this).serialize();
 <script src="{$burl}moment/min/moment.min.js"></script>
 <script src="{$burl}jQuery-QueryBuilder/dist/js/query-builder.standalone.min.js"></script>
 
+
+<script src="{$burl}sql-parser.min.js"></script>
+<script src="{$burl}interact.min.js"></script>
+
 <script type="text/javascript">
 	
 $(document).ready(function(){
@@ -391,24 +395,16 @@ $('#builder-basic').queryBuilder({
   rules: rules_basic
 });
 
-$('#btn-reset').on('click', function() {
-  $('#builder-basic').queryBuilder('reset');
-});
-
-$('#btn-set').on('click', function() {
-  $('#builder-basic').queryBuilder('setRules', rules_basic);
-});
-
-$('#btn-get').on('click', function() {
-  var result = $('#builder-basic').queryBuilder('getRules');
-  
-  if (!$.isEmptyObject(result)) {
-    alert(JSON.stringify(result, null, 2));
-  }
-});
-});
 
 
+$("input[name='submit']").click(function(){
+     var result = $('#builder-basic').queryBuilder('getSQL', false);
+   
+       if (result.sql.length) {
+      $("#sqlcode").val(result.sql);
+      }
+      
+});
 $("#querybuild").on('submit',function(){
     
       var result = $('#builder-basic').queryBuilder('getRules');
@@ -416,12 +412,87 @@ $("#querybuild").on('submit',function(){
 
     $("#l_code").val(JSON.stringify(result, null, 2));
     
+    
+     var result2 = $('#builder-basic').queryBuilder('getSQL', false);
+   
+       if (result2.sql.length) {
+      $("#sqlcode").val(result2.sql);
+      }
+      
+      
+       var result3 = $('#builder-basic').queryBuilder('getMongo');
+
+  if (!$.isEmptyObject(result)) {
+    $("#mongocode").val(result3);
+    alert(JSON.stringify(result3, null, 2));
+  }
+    
+     
+    
 });
+
+
+
+
+$('#btn-get-sql').on('click', function() {
+  var result = $('#builder-basic').queryBuilder('getSQL', false);
+
+  if (result.sql.length) {
+    alert(result.sql);
+  }
+});
+
+
+
+
+
+});
+
+
+
+
+
+
 </script>
 EOT;
 
 
+
+if($id !=null)
+{
+    $rs = $this->db->where("id",$id)->get('tbl_listconfig')->row(0);
+    
+    $code =$rs->l_code;
+    
+    
+    $data['l_name'] = $rs->l_name;
+    
+    
+    $body .=<<<EOT
+    
+    <script>
+    $(document).ready(function(){
+  
+     $('#builder-basic').queryBuilder('setRules', {$code});
+     });
+    </script>
+EOT;
+    
+    
+    
+    
+}
+
+if($id != null)
+{
+    $data['id']=$id;
+}
+else
+$data['id']=0;
+
 $data['body']=$body;
+
+        $this->load->view('querybuild', $data);
  $this->load->view('includes/footer', $data);
     /*
 
