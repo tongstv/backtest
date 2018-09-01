@@ -64,6 +64,58 @@ class Backtestrepost extends BaseController
      * This function used to load the first screen of the user
      */
 
+
+    public function event_check($l_id, $date_start, $date_end)
+    {
+
+
+        $res = $this->db->from("tbl_listconfig")->where("id", $l_id)->limit(1)->get()->row(0);
+       
+
+
+        $and = " AND (start >=  " . $date_start . " AND start <= " . $date_end .
+            ")";
+
+
+        $sql = "select * from tbl_candlesd WHERE " . $res->sql_code . "" . $and .
+            " order by start ASC limit 1";
+
+
+        $res = $this->db->query($sql);
+
+        if ($res->num_rows()) {
+
+
+            $result = $res->result();
+
+        print_r($result);
+            return $result;
+
+
+        }
+
+
+    }
+    public function get_sql_where($sql, $array)
+    {
+
+        $r = [];
+
+        $sql = "select * from tbl_candlesd " . $sql;
+
+
+        $res = $this->db->query($sql);
+
+        $row['count'] = $res->num_rows();
+
+
+        $r['count'] = $res->num_rows();
+
+
+        return $r;
+
+
+    }
     public function _example_output($output = null)
     {
 
@@ -78,36 +130,76 @@ class Backtestrepost extends BaseController
     {
         $this->global['pageTitle'] = $this->title . ': Page';
 
-
-        $crud = $this->grocery_crud;
-
-
-        $unset_col = array('user_id', );
+        $this->load->view('includes/header', $this->global);
 
 
-        if ($this->role == ROLE_ADMIN) {
+        $data = [];
 
+
+        $this->db->from("tbl_backtest")->join('tbl_listconfig',
+            'tbl_backtest.code = tbl_listconfig.id', 'left');
+
+        $result = $this->db->get()->result();
+
+
+        $and = '';
+        foreach ($result as $row) {
+          
+
+            if ($row->events != ''):
+
+
+                if (stristr($row->events, ',')) {
+
+                    $eventlist = explode(',', $row->events);
+
+
+                    $total_score = 0;
+
+
+                    foreach ($eventlist as $event) {
+
+
+                        $sres = $this->event_check($event, strtotime($row->date_start), strtotime($row->
+                            date_end));
+
+
+                    }
+
+                } else {
+                    
+                    
+                    
+                     $sres = $this->event_check($row->events, strtotime($row->date_start), strtotime($row->
+                            date_end));
+
+
+                }
+
+
+            else:
+
+
+                if ($row->date_start != '0000-00-00' and $row->date_end != '0000-00-00') {
+                    $and = " AND (start >=  " . strtotime($row->date_start) . " AND start <= " .
+                        strtotime($row->date_end) . ")";
+                }
+
+
+                $check = $this->get_sql_where("WHERE " . $row->sql_code . "" . $and, []);
+
+                $row->count = $check['count'];
+                $data['data'][] = $row;
+
+
+            endif;
+
+            }
+
+
+            $this->load->view('Backtestrepost', $data);
+
+
+            $this->load->view('includes/footer', $data);
         }
-
-        $display_as = array('name' => 'Tên', );
-
-        $required = array('name');
-
-        $crud->field_type('user_id', 'hidden', $this->vendorId);
-
-        $crud->where('user_id', $this->vendorId);
-
-
-        $crud->set_table('tbl_' . strtolower(__class__))->set_subject($this->title)->
-            display_as($display_as)->required_fields($required)->unset_columns($unset_col);
-
-
-        // $crud->set_field_upload('image', 'assets/uploads/files');
-
-
-        //   $crud->set_relation('user_id','users','{username} - {last_name} {first_name}');
-
-        $output = $crud->render();
-        $this->_example_output($output);
     }
-}

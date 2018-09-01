@@ -81,6 +81,10 @@ class Listconfig extends BaseController
         $crud = $this->grocery_crud;
 
 
+        $crud->unset_edit();
+        
+        $crud->add_action('Edit','',base_url('Querybuild/index/'),'ui-button-icon-primary ui-icon ui-icon-document');
+
         $unset_col = array('user_id', );
 
 
@@ -88,7 +92,13 @@ class Listconfig extends BaseController
 
         }
 
-        $display_as = array('name' => 'Tên', );
+        $display_as = array('l_name' => 'Name',
+        
+        'l_code' => 'json code',
+        'sql_code' => 'mysql',
+        'mongo_code' =>'mongodb',
+        'l_score' => 'score'
+         );
 
         $required = array('name');
 

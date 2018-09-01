@@ -21,6 +21,8 @@
 	$this->set_js($this->default_theme_path.'/datatables/js/datatables.js');
 	$this->set_js($this->default_theme_path.'/datatables/extras/TableTools/media/js/ZeroClipboard.js');
 	$this->set_js($this->default_theme_path.'/datatables/extras/TableTools/media/js/TableTools.min.js');
+    
+
 ?>
 <script type='text/javascript'>
 	var base_url = '<?php echo base_url();?>';

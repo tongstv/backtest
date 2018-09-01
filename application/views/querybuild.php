@@ -7,9 +7,17 @@
     <div class="col-md-12">
         <div class="box">
            
+            <?php if(isset($msg)):?>
+            
+            
+          <strong class="text-center-block">  <?php echo $msg;?></strong>
+            
+            <?php endif;?>
             <div class="box-body">
+            <div class='ui-widget-content ui-corner-all datatables'>
                 <div id="builder-basic"></div>
 
+                                
                                 
                                 
                                 <?php echo form_open('',['id' => 'querybuild'])?>
@@ -47,8 +55,7 @@
 
 <?php echo form_close()?>
   
-
-<a id="btn-get-sql" href="#"> get mysql</a>                                
+       </div>                      
             </div>
         </div>
     </div>

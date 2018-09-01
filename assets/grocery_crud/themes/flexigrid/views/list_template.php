@@ -17,6 +17,13 @@
 
 	$this->set_js($this->default_javascript_path.'/jquery_plugins/jquery.numeric.min.js');
 	$this->set_js($this->default_theme_path.'/flexigrid/js/jquery.printElement.min.js');
+    
+    if ($dialog_forms) {
+        $this->set_js_lib($this->default_javascript_path.'/jquery_plugins/jquery.noty.js');
+        $this->set_js_lib($this->default_javascript_path.'/jquery_plugins/config/jquery.noty.config.js');
+        $this->set_js_lib($this->default_javascript_path.'/common/lazyload-min.js');
+}
+
 
 	/** Jquery UI */
 	$this->load_js_jqueryui();

@@ -199,65 +199,7 @@ var formdata=$(this).serialize();
         
         
     }
-    public function up()
-    {
-
-
-        if ($this->role == ROLE_ADMIN):
-
-            $this->dbforge->drop_table('tbl_' . strtolower(__class__), true);
-            $this->dbforge->add_field(array(
-                'id' => array(
-                    'type' => 'INT',
-                    'constraint' => 20,
-                    'unsigned' => true,
-                    'auto_increment' => true),
-                    
-                    'query_gid' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => '255',
-                    ),
-                    'query_join' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => '255',
-                    ),
-                    
-                    'query_join_gid' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => '255',
-                    ),
-                    
-                           'query_field' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => 200,
-                    ),
-                    
-                     'query_logic' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => '255',
-                    ),
-                
-                
-                
-
-         
-                    
-                     'query_value' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => 200,
-                    ),
-                    
-                
-
-
-                ));
-
-            $this->dbforge->add_key('id', true);
-            $attributes = array('ENGINE' => 'InnoDB');
-            $this->dbforge->create_table('tbl_' . strtolower(__class__), false, $attributes);
-
-        endif;
-    }
+   
 
     /**
      * This function used to load the first screen of the user
@@ -278,6 +220,29 @@ var formdata=$(this).serialize();
         $this->global['pageTitle'] = $this->title . ': Page';
         
         
+            if($this->input->post('update'))
+            {
+                
+                
+                
+                 
+                    $postval = array('l_name' => $this->input->post('l_name'),
+                    
+                    'l_code' =>  $this->input->post('l_code'),
+                    
+                    'sql_code' => $this->input->post('sql_code'),
+                          'mongo_code' => $this->input->post('mongo_code'), 
+                    
+                    );
+                    
+                    $this->db->update("tbl_listconfig",$postval,"id=".$this->input->post('id'));
+                    
+                    
+                    $data['msg'] ="update querybuild success";
+                
+                
+                
+            }
         
             if($this->input->post('submit'))
             {
@@ -292,7 +257,11 @@ var formdata=$(this).serialize();
                     
                     $postval = array('l_name' => $this->input->post('l_name'),
                     
-                    'l_code' =>  $this->input->post('l_code')
+                    'l_code' =>  $this->input->post('l_code'),
+                    
+                    'sql_code' => $this->input->post('sql_code'),
+                          'mongo_code' => $this->input->post('mongo_code'), 
+                    
                     );
                     
                     $this->db->insert("tbl_listconfig",$postval);
@@ -397,14 +366,7 @@ $('#builder-basic').queryBuilder({
 
 
 
-$("input[name='submit']").click(function(){
-     var result = $('#builder-basic').queryBuilder('getSQL', false);
-   
-       if (result.sql.length) {
-      $("#sqlcode").val(result.sql);
-      }
-      
-});
+
 $("#querybuild").on('submit',function(){
     
       var result = $('#builder-basic').queryBuilder('getRules');
@@ -423,8 +385,8 @@ $("#querybuild").on('submit',function(){
        var result3 = $('#builder-basic').queryBuilder('getMongo');
 
   if (!$.isEmptyObject(result)) {
-    $("#mongocode").val(result3);
-    alert(JSON.stringify(result3, null, 2));
+    $("#mongocode").val(JSON.stringify(result3, null, 2));
+ 
   }
     
      

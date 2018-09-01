@@ -81,6 +81,21 @@ class Backtest extends BaseController
         $this->load->view('includes/footer', $data);
     }
 
+    public function select($table ='tbl_listconfig')
+    {
+        
+        $options=[];
+        $data=[];
+        $result = $this->db->get($table)->result();
+        
+        foreach($result AS $row)
+        {
+            $options[$row->id]= $row->l_name;
+            
+            $data[] = $options;
+        }
+        return $options;
+    }
     public function index()
     {
         $this->global['pageTitle'] = $this->title . ': Page';
@@ -96,9 +111,12 @@ class Backtest extends BaseController
 
         }
 
-        $display_as = array('code' => 'Strategies', );
+        $display_as = array('code' => 'Strategies');
 
-        $required = array('name');
+        $required = array('name','code','quantity','fee');
+        
+        
+        $crud->set_rules('events','events','array');
 
 
 
@@ -110,8 +128,14 @@ class Backtest extends BaseController
         // $crud->set_field_upload('image', 'assets/uploads/files');
 
 
-         $crud->set_relation('code','tbl_listconfig','{l_name}');
-
+      // $crud->set_relation('events','tbl_listconfig','{l_name}');
+       
+       $crud->field_type('events','multiselect',$this->select());
+          
+          
+         $crud->set_relation('stoplost','tbl_listconfig','{l_name}');
+         $crud->set_relation('exitmarket','tbl_listconfig','{l_name}');
+            $crud->set_relation('code','tbl_listconfig','{l_name}');
         $output = $crud->render();
         $this->_example_output($output);
     }
