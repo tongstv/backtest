@@ -22,6 +22,7 @@
             <td>date Start</td>
                   <td>date end</td>
                         <td>Score</td>
+                          <td></td>
             </tr>
             </thead>
         
@@ -43,7 +44,7 @@
                      </td>
                     
                     <th><?php echo $row->count?></th>
-                    <th style="width: 40px">Label</th>
+                    <th style="width: 40px"><a href="<?php echo base_url('Backtestrepost/viewdetail/')?><?php echo $row->id?>">View</a></th>
                   </tr>
                   
                   <?php endforeach;?>
